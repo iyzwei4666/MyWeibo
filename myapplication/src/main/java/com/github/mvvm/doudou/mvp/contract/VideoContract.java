@@ -1,7 +1,10 @@
 package com.github.mvvm.doudou.mvp.contract;
 
+import com.github.mvvm.doudou.mvp.model.entity.Result;
 import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
+
+import io.reactivex.Observable;
 
 
 /**
@@ -24,6 +27,7 @@ public interface VideoContract {
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel {
-
+        Observable<Result> searchMovieByQ(String q);
+        Observable<Result> searchMovieByQTag(String tag);
     }
 }
