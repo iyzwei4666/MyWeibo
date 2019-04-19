@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/public_white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:src="@drawable/banner"
+        android:layout_width="match_parent"
+        android:layout_height="240dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:text="折扣游戏"
+            android:id="@+id/sale"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/public_background"
+            android:textColor="@color/public_color_959292"
+            android:textSize="@dimen/public_font_24sp"
+            />
+
+        <Button
+            android:id="@+id/search"
+            android:text="搜索游戏"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/public_background"
+            android:textColor="@color/public_color_959292"
+            android:textSize="@dimen/public_font_24sp"
+            />
+        <Button
+            android:id="@+id/douban"
+            android:text="豆瓣电影"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/public_background"
+            android:textColor="@color/public_color_959292"
+            android:textSize="@dimen/public_font_24sp"
+            />
+    </LinearLayout>
+</LinearLayout>
