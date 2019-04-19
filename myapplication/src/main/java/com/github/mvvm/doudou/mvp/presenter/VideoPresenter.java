@@ -64,6 +64,22 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
 
                 });
     }
+    public void searchMovieByTag(String tag) {
+        mModel.searchMovieByTag(tag)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(new RetryWithDelay(3,2))
+                .doOnSubscribe(disposable -> {mRootView.showLoading();})
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new ErrorHandleSubscriber<Result>(mErrorHandler){
+                    @Override
+                    public void onNext(Result result) {
+                        System.out.print(result.toString());
+                    }
+
+                });
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -72,4 +88,6 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
         this.mImageLoader = null;
         this.mApplication = null;
     }
+
+
 }

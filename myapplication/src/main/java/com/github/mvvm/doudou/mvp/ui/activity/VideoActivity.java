@@ -61,6 +61,7 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
             @Override
             public void onClick(View view) {
                 mPresenter.searchMovieByQ("周星驰");
+//                mPresenter.searchMovieByTag("喜剧");
             }
         });
     }
