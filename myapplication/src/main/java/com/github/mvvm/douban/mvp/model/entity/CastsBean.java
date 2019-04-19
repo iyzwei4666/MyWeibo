@@ -1,12 +1,7 @@
-package com.github.mvvm.doudou.mvp.model.entity;
+package com.github.mvvm.douban.mvp.model.entity;
 
-public class DirectorsBean {
-        /**
-         * alt : https://movie.douban.com/celebrity/1406354/
-         * avatars : {"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1544189025.81.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1544189025.81.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1544189025.81.webp"}
-         * name : 克里斯托弗·布鲁斯
-         * id : 1406354
-         */
+public class CastsBean {
+      
 
         private String alt;
         private AvatarsBean avatars;

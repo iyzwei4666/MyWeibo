@@ -1,13 +1,10 @@
-package com.github.mvvm.doudou.di.module;
-
-import com.jess.arms.di.scope.ActivityScope;
+package com.github.mvvm.douban.di.module;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 
-import com.github.mvvm.doudou.mvp.contract.VideoContract;
-import com.github.mvvm.doudou.mvp.model.VideoModel;
+import com.github.mvvm.douban.mvp.contract.VideoContract;
+import com.github.mvvm.douban.mvp.model.VideoModel;
 
 
 /**

@@ -9,12 +9,20 @@
     <TextView
         android:id="@+id/get"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/public_height_200px"
+        android:background="@color/colorAccent"
+        android:gravity="center"
         android:text="get" />
 
-    <TextView
-        android:id="@+id/data"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/get" />
+        app:layout_constraintTop_toBottomOf="@id/get">
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.NestedScrollView>
+
 </android.support.constraint.ConstraintLayout>

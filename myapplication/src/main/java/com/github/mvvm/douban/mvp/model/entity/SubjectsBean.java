@@ -1,4 +1,4 @@
-package com.github.mvvm.doudou.mvp.model.entity;
+package com.github.mvvm.douban.mvp.model.entity;
 
 import java.util.List;
 
@@ -114,5 +114,21 @@ public class SubjectsBean {
             this.directors = directors;
         }
 
-
+    @Override
+    public String toString() {
+        return "SubjectsBean{" +
+                "rating=" + rating +
+                ", title='" + title + '\'' +
+                ", collect_count=" + collect_count +
+                ", original_title='" + original_title + '\'' +
+                ", subtype='" + subtype + '\'' +
+                ", year='" + year + '\'' +
+                ", images=" + images +
+                ", alt='" + alt + '\'' +
+                ", id='" + id + '\'' +
+                ", genres=" + genres +
+                ", casts=" + casts +
+                ", directors=" + directors +
+                '}';
     }
+}

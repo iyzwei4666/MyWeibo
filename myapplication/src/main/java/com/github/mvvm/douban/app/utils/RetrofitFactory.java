@@ -1,6 +1,7 @@
 package com.github.mvvm.douban.app.utils;
 
-import com.github.mvvm.doudou.mvp.model.api.VideoService;
+import com.github.mvvm.douban.mvp.model.api.VideoService;
+import com.github.mvvm.douban.mvp.model.entity.MovieResult;
 
 
 import me.jessyan.armscomponent.commonsdk.utils.BaseConverterFactory;
@@ -15,7 +16,7 @@ public class RetrofitFactory {
                 if(videoService ==null){
             videoService =new Retrofit.Builder()
                     .baseUrl("https://api.douban.com")
-                    .addConverterFactory(new BaseConverterFactory<com.github.mvvm.doudou.mvp.model.entity.Result>() {
+                    .addConverterFactory(new BaseConverterFactory<MovieResult>() {
                         @Override
                         public BaseResponseConverter responseConverter() {
                             return new VideoResponseConverter();

@@ -29,7 +29,7 @@
             android:name="com.github.mvvm.douban.app.GlobalConfiguration"
             android:value="ConfigModule" />
 
-        <activity android:name="com.github.mvvm.doudou.mvp.ui.activity.VideoActivity"></activity>
+        <activity android:name=".mvp.ui.activity.VideoActivity"></activity>
     </application>
 
 </manifest>

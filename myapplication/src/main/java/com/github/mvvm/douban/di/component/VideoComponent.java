@@ -1,15 +1,15 @@
-package com.github.mvvm.doudou.di.component;
+package com.github.mvvm.douban.di.component;
 
 import dagger.BindsInstance;
 import dagger.Component;
 
 import com.jess.arms.di.component.AppComponent;
 
-import com.github.mvvm.doudou.di.module.VideoModule;
-import com.github.mvvm.doudou.mvp.contract.VideoContract;
+import com.github.mvvm.douban.di.module.VideoModule;
+import com.github.mvvm.douban.mvp.contract.VideoContract;
 
 import com.jess.arms.di.scope.ActivityScope;
-import com.github.mvvm.doudou.mvp.ui.activity.VideoActivity;
+import com.github.mvvm.douban.mvp.ui.activity.VideoActivity;
 
 
 /**

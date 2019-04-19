@@ -1,4 +1,4 @@
-package com.github.mvvm.doudou.mvp.ui.activity;
+package com.github.mvvm.douban.mvp.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,14 +9,14 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.github.mvvm.douban.R;
+import com.github.mvvm.douban.mvp.model.entity.MovieResult;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
-import com.github.mvvm.doudou.di.component.DaggerVideoComponent;
-import com.github.mvvm.doudou.mvp.contract.VideoContract;
-import com.github.mvvm.doudou.mvp.presenter.VideoPresenter;
-
+import com.github.mvvm.douban.di.component.DaggerVideoComponent;
+import com.github.mvvm.douban.mvp.contract.VideoContract;
+import com.github.mvvm.douban.mvp.presenter.VideoPresenter;
 
 
 import me.jessyan.armscomponent.commonsdk.core.RouterHub;
@@ -38,7 +38,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  */
 @Route(path = RouterHub.DOUBAN_SEARCH)
 public class VideoActivity extends BaseActivity<VideoPresenter> implements VideoContract.View {
-
+    GISLoadingDlg loadingDlg ;
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerVideoComponent //如找不到该类,请编译一下项目
@@ -53,10 +53,14 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
     public int initView(@Nullable Bundle savedInstanceState) {
         return R.layout.video_main; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
-
+    TextView data;
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         TextView get = findViewById(R.id.get);
+        data = findViewById(R.id.data);
+        loadingDlg = new GISLoadingDlg(VideoActivity.this);
+        loadingDlg.setTitle("数据加载");
+        loadingDlg.setLoadingMessage("正在获取服务数据...");
         get.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,12 +72,14 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
 
     @Override
     public void showLoading() {
-
     }
-
+    @Override
+    public void showLoading(String netKey) {
+        loadingDlg.show(netKey);
+    }
     @Override
     public void hideLoading() {
-
+        loadingDlg.hide();
     }
 
     @Override
@@ -91,5 +97,17 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
     @Override
     public void killMyself() {
         finish();
+    }
+
+    @Override
+    public boolean isCancel(String key) {
+        return loadingDlg.isCancel(key);
+    }
+
+
+
+    @Override
+    public void showMovie(MovieResult result) {
+        data.setText(result.toString());
     }
 }

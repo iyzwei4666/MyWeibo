@@ -1,4 +1,4 @@
-package com.github.mvvm.doudou.mvp.model.entity;
+package com.github.mvvm.douban.mvp.model.entity;
 
 public class RatingBean {
         /**

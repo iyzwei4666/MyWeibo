@@ -1,8 +1,8 @@
-package com.github.mvvm.doudou.mvp.model.entity;
+package com.github.mvvm.douban.mvp.model.entity;
 
 import java.util.List;
 
-public class Result {
+public class MovieResult {
 
 
 
@@ -52,4 +52,14 @@ public class Result {
         this.subjects = subjects;
     }
 
+    @Override
+    public String toString() {
+        return "MovieResult{" +
+                "count=" + count +
+                ", start=" + start +
+                ", total=" + total +
+                ", title='" + title + '\'' +
+                ", subjects=" + subjects.toString() +
+                '}';
+    }
 }

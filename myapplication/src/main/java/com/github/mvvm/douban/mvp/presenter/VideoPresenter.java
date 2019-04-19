@@ -1,8 +1,8 @@
-package com.github.mvvm.doudou.mvp.presenter;
+package com.github.mvvm.douban.mvp.presenter;
 
 import android.app.Application;
 
-import com.github.mvvm.doudou.mvp.model.entity.Result;
+import com.github.mvvm.douban.mvp.model.entity.MovieResult;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
@@ -16,8 +16,10 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay;
 
 import javax.inject.Inject;
 
-import com.github.mvvm.doudou.mvp.contract.VideoContract;
+import com.github.mvvm.douban.mvp.contract.VideoContract;
 import com.jess.arms.utils.RxLifecycleUtils;
+
+import java.util.Date;
 
 
 /**
@@ -43,43 +45,59 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
     @Inject
     AppManager mAppManager;
 
+    VideoContract.View view;
+
     @Inject
     public VideoPresenter(VideoContract.Model model, VideoContract.View rootView) {
         super(model, rootView);
+        view = rootView;
     }
-    public void searchMovieByQ(String q){
 
+    public void searchMovieByQ(String q) {
+        final String netkey = new Date().toString();
+        view.showLoading(netkey);
         mModel.searchMovieByQ(q)
                 .subscribeOn(Schedulers.io())
-                .retryWhen(new RetryWithDelay(3,2))
-                .doOnSubscribe(disposable -> {mRootView.showLoading();})
+                .retryWhen(new RetryWithDelay(3, 2))
+                .doOnSubscribe(disposable -> {
+                    mRootView.showLoading();
+                })
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                .subscribe(new ErrorHandleSubscriber<Result>(mErrorHandler){
+                .subscribe(new ErrorHandleSubscriber<MovieResult>(mErrorHandler) {
                     @Override
-                    public void onNext(Result result) {
-                        System.out.print(result.toString());
+                    public void onNext(MovieResult result) {
+                        if (!view.isCancel(netkey)) {
+                            view.hideLoading();
+                            view.showMovie(result);
+                        } else {
+                            view.showMessage("请求被取消");
+                        }
                     }
 
                 });
     }
+
     public void searchMovieByTag(String tag) {
         mModel.searchMovieByTag(tag)
                 .subscribeOn(Schedulers.io())
-                .retryWhen(new RetryWithDelay(3,2))
-                .doOnSubscribe(disposable -> {mRootView.showLoading();})
+                .retryWhen(new RetryWithDelay(3, 2))
+                .doOnSubscribe(disposable -> {
+                    mRootView.showLoading();
+                })
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                .subscribe(new ErrorHandleSubscriber<Result>(mErrorHandler){
+                .subscribe(new ErrorHandleSubscriber<MovieResult>(mErrorHandler) {
                     @Override
-                    public void onNext(Result result) {
+                    public void onNext(MovieResult result) {
                         System.out.print(result.toString());
                     }
 
                 });
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

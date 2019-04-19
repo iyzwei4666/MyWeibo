@@ -1,10 +1,10 @@
-package com.github.mvvm.doudou.mvp.model.entity;
+package com.github.mvvm.douban.mvp.model.entity;
 
-public class ImagesBean {
+public class AvatarsBean {
         /**
-         * small : https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2280764377.webp
-         * large : https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2280764377.webp
-         * medium : https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2280764377.webp
+         * small : https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p568.webp
+         * large : https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p568.webp
+         * medium : https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p568.webp
          */
 
         private String small;

@@ -1,13 +1,13 @@
 package com.github.mvvm.douban.app.utils;
 
-import com.github.mvvm.doudou.mvp.model.entity.Result;
+import com.github.mvvm.douban.mvp.model.entity.MovieResult;
 import com.google.gson.Gson;
 
 import me.jessyan.armscomponent.commonsdk.utils.BaseResponseConverter;
 
-public class VideoResponseConverter extends BaseResponseConverter<Result> {
+public class VideoResponseConverter extends BaseResponseConverter<MovieResult> {
     @Override
-    public Result parserHtml(String json) {
-        return  new Gson().fromJson(json, Result.class);
+    public MovieResult parserHtml(String json) {
+        return  new Gson().fromJson(json, MovieResult.class);
     }
 }

@@ -1,9 +1,9 @@
-package com.github.mvvm.doudou.mvp.model;
+package com.github.mvvm.douban.mvp.model;
 
 import android.app.Application;
 
 import com.github.mvvm.douban.app.utils.RetrofitFactory;
-import com.github.mvvm.doudou.mvp.model.entity.Result;
+import com.github.mvvm.douban.mvp.model.entity.MovieResult;
 import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
@@ -12,7 +12,7 @@ import com.jess.arms.di.scope.ActivityScope;
 
 import javax.inject.Inject;
 
-import com.github.mvvm.doudou.mvp.contract.VideoContract;
+import com.github.mvvm.douban.mvp.contract.VideoContract;
 
 import io.reactivex.Observable;
 
@@ -49,12 +49,12 @@ public class VideoModel extends BaseModel implements VideoContract.Model {
     }
 
     @Override
-    public Observable<Result> searchMovieByQ(String q) {
+    public Observable<MovieResult> searchMovieByQ(String q) {
         return RetrofitFactory.getVideoService().searchMovieByQ(q);
     }
 
     @Override
-    public Observable<Result> searchMovieByTag(String tag) {
+    public Observable<MovieResult> searchMovieByTag(String tag) {
         return null;
     }
 }
