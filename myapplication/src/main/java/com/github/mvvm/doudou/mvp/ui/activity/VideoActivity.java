@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.github.mvvm.douban.R;
@@ -54,7 +56,13 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-
+        TextView get = findViewById(R.id.get);
+        get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPresenter.searchMovieByQ("周星驰");
+            }
+        });
     }
 
     @Override
