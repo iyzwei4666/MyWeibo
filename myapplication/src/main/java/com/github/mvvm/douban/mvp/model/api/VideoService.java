@@ -16,5 +16,12 @@ public interface VideoService {
     @GET("/v2/movie/search")
     Observable<MovieResult> searchMovieByTag(@Query("tag") String tag);
 
+    @GET("/v2/movie/in_theaters")
+    Observable<MovieResult> inTheaters();
 
+    @GET("/v2/movie/top250")
+    Observable<MovieResult> top250();
+
+    @GET("/v2/movie/weekly")
+    Observable<MovieResult> weekly();
 }

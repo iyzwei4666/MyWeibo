@@ -55,6 +55,6 @@ public class VideoModel extends BaseModel implements VideoContract.Model {
 
     @Override
     public Observable<MovieResult> searchMovieByTag(String tag) {
-        return null;
+        return RetrofitFactory.getVideoService().searchMovieByTag(tag);
     }
 }
