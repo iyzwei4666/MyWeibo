@@ -1,1 +1,2 @@
-include ':app', ':CommonSDK', ':CommonService', ':CommonRes', ':module-home', ':module-search',  ':module-detail', ':myapplication'
+include ':CommonSDK', ':CommonService', ':CommonRes'
+include ':module-home', ':module-search',  ':module-detail', ':myapplication', ':app'
