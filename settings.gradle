@@ -1,3 +1,3 @@
-include ':CommonSDK', ':CommonService', ':CommonRes'
+include ':CommonSDK', ':CommonService', ':CommonRes', ':appbox', ':appnews', ':appphoto'
 include ':module-home', ':module-search',  ':module-detail', ':myapplication', ':app'
 include ':toutiao'

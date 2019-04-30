@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/CommonService/CommonService.iml" filepath="$PROJECT_DIR$/CommonService/CommonService.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyWeibo.iml" filepath="$PROJECT_DIR$/MyWeibo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appbox/appbox.iml" filepath="$PROJECT_DIR$/appbox/appbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appnews/appnews.iml" filepath="$PROJECT_DIR$/appnews/appnews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appphoto/appphoto.iml" filepath="$PROJECT_DIR$/appphoto/appphoto.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-detail/module-detail.iml" filepath="$PROJECT_DIR$/module-detail/module-detail.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-home/module-home.iml" filepath="$PROJECT_DIR$/module-home/module-home.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-search/module-search.iml" filepath="$PROJECT_DIR$/module-search/module-search.iml" />
