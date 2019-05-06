@@ -51,6 +51,7 @@ public class PhotoArticleViewBinder extends ItemViewBinder<ImageResult.DataBean,
             if (!TextUtils.isEmpty(item.getObj_url())) {
                 ImageLoader.loadCenterCrop(context, item.getObj_url(), holder.iv_media, R.color.viewBackground);
             }
+            item.getOther_urls().clear();
             item.getOther_urls().add(item.getDownload_url());
             if (item.getOther_urls() != null) {
                 int size = item.getOther_urls().size();
