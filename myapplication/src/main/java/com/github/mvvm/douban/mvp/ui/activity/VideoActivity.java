@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.github.mvvm.douban.R;
+import com.github.mvvm.douban.app.EventBusTags;
 import com.github.mvvm.douban.mvp.model.entity.MovieResult;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
@@ -99,6 +100,7 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
 
     @Override
     public void killMyself() {
+
         Toast.makeText(this , "收到退出的消息",Toast.LENGTH_LONG).show();
 //        finish();
     }
@@ -113,6 +115,6 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
     @Override
     public void showMovie(MovieResult result) {
         data.setText(result.toString());
-        EventBus.getDefault().post("发送退出窗口" ,  "exit" );
+        EventBus.getDefault().post("发送退出窗口" ,  EventBusTags.EXIT );
     }
 }

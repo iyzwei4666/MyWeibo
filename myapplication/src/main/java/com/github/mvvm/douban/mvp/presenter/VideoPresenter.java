@@ -2,6 +2,7 @@ package com.github.mvvm.douban.mvp.presenter;
 
 import android.app.Application;
 
+import com.github.mvvm.douban.app.EventBusTags;
 import com.github.mvvm.douban.mvp.model.entity.MovieResult;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
@@ -109,7 +110,7 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
                 });
     }
 
-    @Subscriber(tag = "exit")
+    @Subscriber(tag = EventBusTags.EXIT)
     public void exit(String msg) {
             view.killMyself();
     }

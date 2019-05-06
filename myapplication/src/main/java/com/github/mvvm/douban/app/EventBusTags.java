@@ -13,5 +13,5 @@ import org.simple.eventbus.EventBus;
  * ================================================
  */
 public interface EventBusTags {
-
+    String EXIT = "EXIT";
 }
