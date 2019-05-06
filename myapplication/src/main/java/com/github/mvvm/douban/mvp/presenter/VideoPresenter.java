@@ -19,6 +19,9 @@ import javax.inject.Inject;
 import com.github.mvvm.douban.mvp.contract.VideoContract;
 import com.jess.arms.utils.RxLifecycleUtils;
 
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
+
 import java.util.Date;
 
 
@@ -51,6 +54,7 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
     public VideoPresenter(VideoContract.Model model, VideoContract.View rootView) {
         super(model, rootView);
         view = rootView;
+        EventBus.getDefault().register(this);
     }
 
     public void searchMovieByQ(String q) {
@@ -80,6 +84,8 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
     }
 
     public void searchMovieByTag(String tag) {
+        final String netkey = new Date().toString();
+        view.showLoading(netkey);
         mModel.searchMovieByTag(tag)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(3, 2))
@@ -92,12 +98,21 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
                 .subscribe(new ErrorHandleSubscriber<MovieResult>(mErrorHandler) {
                     @Override
                     public void onNext(MovieResult result) {
-                        System.out.print(result.toString());
+                        if (!view.isCancel(netkey)) {
+                            view.hideLoading();
+                            view.showMovie(result);
+                        } else {
+                            view.showMessage("请求被取消");
+                        }
                     }
 
                 });
     }
 
+    @Subscriber(tag = "exit")
+    public void exit(String msg) {
+            view.killMyself();
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -105,6 +120,7 @@ public class VideoPresenter extends BasePresenter<VideoContract.Model, VideoCont
         this.mAppManager = null;
         this.mImageLoader = null;
         this.mApplication = null;
+        EventBus.getDefault().unregister(this);
     }
 
 

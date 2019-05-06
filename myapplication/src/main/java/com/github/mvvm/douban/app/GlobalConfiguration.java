@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
+import com.github.mvvm.douban.mvp.model.Api;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.http.log.RequestInterceptor;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.github.mvvm.douban.BuildConfig;
-import com.github.mvvm.douban.mvp.model.api.Api;
+
 
 /**
  * ================================================

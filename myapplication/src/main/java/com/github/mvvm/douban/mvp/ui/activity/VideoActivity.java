@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.github.mvvm.douban.R;
@@ -18,6 +19,8 @@ import com.github.mvvm.douban.di.component.DaggerVideoComponent;
 import com.github.mvvm.douban.mvp.contract.VideoContract;
 import com.github.mvvm.douban.mvp.presenter.VideoPresenter;
 
+
+import org.simple.eventbus.EventBus;
 
 import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 
@@ -64,8 +67,8 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
         get.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.searchMovieByQ("周星驰");
-//                mPresenter.searchMovieByTag("喜剧");
+//                mPresenter.searchMovieByQ("周星驰");
+                mPresenter.searchMovieByTag("喜剧");
             }
         });
     }
@@ -96,7 +99,8 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
 
     @Override
     public void killMyself() {
-        finish();
+        Toast.makeText(this , "收到退出的消息",Toast.LENGTH_LONG).show();
+//        finish();
     }
 
     @Override
@@ -109,5 +113,6 @@ public class VideoActivity extends BaseActivity<VideoPresenter> implements Video
     @Override
     public void showMovie(MovieResult result) {
         data.setText(result.toString());
+        EventBus.getDefault().post("发送退出窗口" ,  "exit" );
     }
 }
